@@ -1,24 +1,17 @@
-import logo from './logo.svg';
 import './App.css';
 
+import MyComponent from './Components/MyComponent';
+import { DependencyProvider } from './Contexts/DependecyProvider';
+
 function App() {
+  const myService = {
+    callMe: () => { console.log('this is some dependency') }
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <DependencyProvider myService={myService}>
+      <MyComponent></MyComponent>
+    </DependencyProvider>
   );
 }
 
