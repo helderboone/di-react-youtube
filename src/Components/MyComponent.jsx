@@ -1,11 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import { useDependency } from '../Contexts/DependecyProvider'
 
 const MyComponent = () => {
-    const { myService } = useDependency();
-    myService.callMe();
+    const { myService, logger } = useDependency();
+    myService.callMe()
     
+    useEffect(() => {
+      logger.log('This is a message from logger');
+    }, [logger])
+
+
   return   
   (
     <div>MyComponent</div>
